@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link  rel= "stylesheet" type = "text/css"  href = "assets/css/reset.css">
+<link rel = "stylesheet" type = "text/css" href= "assets/css/registration.css">
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<style>
+
+.error {
+  color: red;
+  font-family:Georgia, Serif;
+  font-size:15px;
+  visibility:hidden;
+}
+</style>
+</head>
+<body>
+<section class = "pic">
+		 <div class = "field">
+		   <div id="names">
+		   <header>Registration</header>
+		   </div>
+		    <img src ="assets/images/logo.jpg" id="logo">
+		   <div id="link">
+			   <a href="firstPage.html">Home</a>
+			   <a href="login.php">Login</a>
+			   <a href="#">Registration</a>
+		   </div>
+		 </div>
+		  <div id="formRegistration">
+		  <div id = "place"><header>Registration:</header></div>
+		  <form  method=post action="registration.php" name = "registration">
+			  <label class="lb">Input User name:</label><br><br>
+			  <input type="text" id="username" name="username"><br><br>
+			   <label id = "nevalidName" class ="error">Name more than 5 symbols</label><br><br>
+			  <label class = "lb">Input password:</label><br><br>
+			  <input type="password" name="pass" id = "pass"><br><br>
+			  <label id = "nevalidPass" class ="error">Pass more than 5 symbols </label><br><br>
+			  <label class = "lb">Confirm password:</label><br><br>
+			  <input type="password" name="pass1" id ="pass1"><br><br>
+			   <label class = "lb">Input email:</label><br><br>
+			  <input type="text" name="email" id = "email"><br><br>
+			   <label id="nevalidEmail"class="error">Nevalid mail...try again... </label><br><br>
+			  <input type="submit"  id= "btnSubmit" value="Welcome !" id ="btnRegistration"><br>
+		 </form>
+		 </div>
+		 
+	</section>
+</body>
+<script>
+$(function() {
+$(".field").focusin(function(){
+	$(this).css("opacity","0.8");
+});
+$(".field").focusout(function(){
+	$(this).css("opacity","0.2");
+});
+
+$("form").submit(function(e){
+	  var userName = $("#username").val();
+	  var pass = $("#pass").val();
+	  var pass1 = $("#pass1").val();
+	  var email = $("#email").val();
+	  var pattern  = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
+		
+		
+		
+	if(userName.length < 5) {
+	   $("#username").css("border","2px solid red");
+	   $("#nevalidName").css("visibility","visible");
+	   e.preventDefault();
+	}
+	if (pass.length < 5) {
+		$("#pass").css("border","2px solid red");
+		$("#nevalidPass").css("visibility","visible");
+		e.preventDefault();
+	}
+	if (pass1.length < 5) {
+		$("#pass1").css("border","2px solid red");
+		e.preventDefault();
+	}
+	if(pass != pass1){
+		$("#nevalidPass").css("visibility","visible");
+		e.preventDefault();
+	}
+	if (email.length < 6)
+		{
+		  $("#nevalidEmail").css("visibility","visible");
+		  $("#email").css("border","2px solid red");
+		  e.preventDefault();
+		}
+	if ((userName.length <5) && (pass.length <5) &&(pass1.length <5)
+		&& (pass != pass1) && (email.length<6)) {
+		
+		 $("#username").css("border","2px solid red");
+		 $("#pass").css("border","2px solid red");
+		 $("#pass1").css("border","2px solid red");
+		 $("#email").css("border","2px solid red");
+		 e.preventDefault();
+	}
+ });
+
+});
+</script>
+</html>

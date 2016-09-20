@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>animals</title>
+<link  rel= "stylesheet" type = "text/css"  href = "assets/css/reset.css">
+<link rel = "stylesheet" type = "text/css" href= "assets/css/firstPage.css">
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+	<section class = "pic">
+		 <div class = "field">
+		   <div id="names">
+		   <header>Welcome to animals.bg</header>
+		   </div>
+		    <img src ="assets/images/logo.jpg" id="logo">
+		   <div id="link">
+		   <a href="#">Home</a>
+		   <a href= "user.html">Users</a>
+		   <a href="About.php">About</a>
+		    <a href = "logout.php">Logout</a>
+		   </div>
+		 </div>
+		
+	</section>
+</body>
+<script>
+$( document ).ready(function() {
+
+	$(".field").focusin(function(){
+		$(this).css("opacity","0.8");
+	});
+	
+	$(".field").focusout(function(){
+		$(this).css("opacity","0.2");
+	});
+});
+
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>About</title>
+<link  rel= "stylesheet" type = "text/css"  href = "assets/css/reset.css">
+<link rel = "stylesheet" type = "text/css" href= "assets/css/about.css">
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<style>
+.error {
+	color:red;
+	visibility:hidden;
+}
+</style>
+</head>
+<style>
+ #formRegistration
+ {
+        visibility:hidden;
+ }
+</style>
+<body>
+<section class = "pic">
+		 <div class = "field">
+		   <div id="names">
+		   <header>About</header>
+		   </div>
+		    <img src ="assets/images/logo.jpg" id="logo">
+		   <div id="link">
+		   <a href="firstPage.html" >Home</a>
+		   <a href="login.php">Login</a>
+		   <a href="registration.html">Registration</a>
+		   <a href= "user.html">Users</a>
+		   <a href="#">About</a>
+		   </div>
+		 </div>
+		  <div id="formRegistration">
+			  <div id = "place"><header>Change my Information:</header></div>
+			  <form  method=post action = "" name= "information" >
+				  <label class="lb">Input First Name:</label><br><br>
+				  <label class = "error" id= "firstNameError">name must be atleast 2 charackters</label>
+				  <input type="text" name="firstName" id= "firstName"><br><br>
+				  <label class = "lb">Input Last Name</label><br><br>
+				  <label class = "error" id= "lastNameError"> name must be atleast 2 charackters</label>
+				  <input type="text" name="lastName" id = "lastName"><br><br>
+				  <label class = "lb">Input telefone Number:</label><br><br>
+				  <label class = "error" id="numberError"> number must be atleast 5 number</label>
+				  <input type="text" name="tNumber" id = "tNumber"><br><br>
+				    <label class = "lb">kind of animals:</label><br><br>
+				   <label class = "error" id="kindError">kind must be atleast 2 charackters</label>
+				  <input type="text" name="info" id = "info"><br><br>
+				  <label class = "lb">Upload picture:</label><br><br>
+				   <input type="file" name="pic" accept="image/*"><br>
+				  <input type="submit" value="Good!" id ="btnRegistration"><br>
+		   </form>
+		 </div>
+		
+		<div id="MyInformation">
+		  <div id = "places"><header>My Information:</header></div>
+		       <label class = "lbInfo"> First Name:</label><br><br>
+			   <p><br><br>
+			   <label class = "lbInfo"> Last Name:</label><br><br>
+			   <p><br><br>
+			   <label class = "lbInfo">My telefone Number:</label><br><br>
+			   <p> </p><br><br>
+			   <label class = "lbInfo">animal kind:</label><br><br>
+			   <p></p><br><br>
+			   <label class = "lbInfo">My  animal:</label><br><br>
+			   <!--<img src="assets/images/panda.jpg" height="60" width="60">-->
+			   <button type="button" id="change" >Change Info?</button>
+		 </div>
+		
+	</section>
+</body>
+<script>
+
+$(function() {
+	
+	$(".field").focusin(function(){
+		$(this).css("opacity","0.8");
+	});
+	
+	$(".field").focusout(function(){
+		$(this).css("opacity","0.2");
+	});
+	
+	$("button").click(function(){
+		$("#formRegistration").css("visibility","visible");
+		$("form").submit(function(e){
+			var firstName = $("#firstName").val();
+			var lastName = $("#lastName").val();
+			var number = $("#tNumber").val();
+			var kind = $("#info").val();
+		
+			
+			if (firstName.length < 2) {
+				$("#firstNameError").css("visibility","visible");
+				e.preventDefault();
+			}
+			if (lastName.length <2) {
+				$("#lastNameError").css("visibility","visible");
+				e.preventDefault();
+			} 
+			if(number.length <5) {
+			 $("#numberError").css("visibility","visible");
+			  e.preventDefault();
+			}
+			if(kind.length < 2) {
+				$("#kindError").css("visibility","visible");
+				e.preventDefault();
+			}
+		});
+			
+	});
+});
+</script>
+</html>

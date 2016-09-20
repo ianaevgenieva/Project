@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link  rel= "stylesheet" type = "text/css"  href = "assets/css/reset.css">
+<link rel = "stylesheet" type = "text/css" href= "assets/css/user.css">
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<style>
+  .box 
+   { 
+	    
+	    width:155px;
+	    height:155px;
+	    border-radius:10px;
+   }
+ .picture-box{
+   padding: 1em;
+   float:left;
+   font-family: 'Baloo Bhaina', cursive;
+   color:#696969;
+   font-size:25px;
+ }
+</style>
+<body>
+<section class = "pic">
+		 <div class = "field">
+		   <div id="names">
+		   <header>User</header>
+		   	</div>
+		    	<img src ="assets/images/logo.jpg" id="logo">
+				   <div id="link">
+					   <a href="homeUser.html">Home</a>
+					   <a href= "#">Users</a>
+					   <a href="About.php">About</a>
+					    <a href = "logout.php">Logout</a>
+		 			</div>
+	 		</div>
+	 		<div id="pictures">
+	 		    
+	 		</div>
+	</section>
+	
+</body>
+<script>
+$(function() {
+	data = 0;
+	$(".field").focusin(function(){
+		$(this).css("opacity","0.8");
+	});
+	
+	$(".field").focusout(function(){
+		$(this).css("opacity","0.2");
+	});
+	 
+	$.get("getAnimals.php", function(data){
+		data = data;
+        div =$("#pictures");
+        console.log(data);
+        for(picture in data["pictures"]){
+            addImages((data["pictures"][picture][0]),(data["pictures"][picture][1]));
+        }      
+   }, "json");
+	
+	
+	function addImages(userName, imageSRC )
+	{
+		div.append("<div class=picture-box>"+"<p>" +userName+ "</p>"+ "<img class=box src="+imageSRC+" />"+"</div>");
+		//$(".picture-box").append("<span>" +userName+ "</span>"+ "<img class=box src="+imageSRC+" />");
+		//div.append("<img class=box src="+imageSRC+" />");
+	} 
+});
+
+</script>
+</html>
